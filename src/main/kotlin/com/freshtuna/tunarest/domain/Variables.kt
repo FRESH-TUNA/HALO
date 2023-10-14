@@ -1,7 +1,9 @@
-package com.freshtuna.tunahal.domain
+package com.freshtuna.tunarest.domain
+
+import java.util.TreeMap
 
 class Variables {
-    private var variableListMap: MutableMap<String, MutableList<String>> = HashMap()
+    private var variableListMap: MutableMap<String, MutableList<String>> = TreeMap()
 
     fun add(name: String, value: String) {
 
@@ -17,5 +19,9 @@ class Variables {
 
     fun findAllValuesBy(name: String): List<String> {
         return variableListMap[name]!!
+    }
+
+    fun findAllNames(): List<String> {
+        return variableListMap.keys.toList()
     }
 }

@@ -1,6 +1,6 @@
-package com.freshtuna.tunahal.util.templateExpander
+package com.freshtuna.tunarest.util.templateExpander
 
-import com.freshtuna.tunahal.domain.Variables
+import com.freshtuna.tunarest.domain.Variables
 
 class HalSimpleStringExpander(
     private val nextExpander: TemplateExpander?

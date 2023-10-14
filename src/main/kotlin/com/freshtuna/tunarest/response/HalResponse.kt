@@ -1,4 +1,4 @@
-package com.freshtuna.tunahal.response
+package com.freshtuna.tunarest.response
 
 class HalResponse : HalBasicResponse() {
 
