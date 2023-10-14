@@ -19,7 +19,12 @@ class HalSimpleStringExpander(
             val name = match.groups[1]?.value!!
             val range = match.range
 
-            result.replace(range.first, range.last+1, variables.findValueBy(name))
+            val value = variables.findValueBy(name)
+
+            if(value.isNullOrBlank())
+                throw RuntimeException("key: $name is not found")
+
+            result.replace(range.first, range.last+1, value)
         }
 
         if(nextExpander != null)

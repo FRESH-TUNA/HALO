@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Assertions.assertEquals
 class HalLinkBuilderTest {
 
     @Test
-    @DisplayName("LinkBuilder의 모든 파서 테스트")
+    @DisplayName("test all extanders")
     fun test1() {
 
         /**
@@ -55,7 +55,7 @@ class HalLinkBuilderTest {
     }
 
     @Test
-    @DisplayName("파싱을 하지 않는 테스트케이스")
+    @DisplayName("no parsing template test")
     fun test2() {
 
         /**
@@ -79,5 +79,59 @@ class HalLinkBuilderTest {
          */
         val expected = "${root}${testTemplate}"
         assertEquals(link, expected)
+    }
+
+    @Test
+    @DisplayName("query parsing test")
+    fun test3() {
+
+        /**
+         * given
+         */
+        val pageKey = "page"
+        val sortKey = "sort"
+        val sizeKey = "size"
+
+        val testTemplate = "/user/1/comments{?${pageKey},${sortKey},${sizeKey}}"
+
+        /**
+         * when
+         */
+        val page = "1"
+        val sort = "asc"
+
+        val link = HalLinkBuilder.builder()
+            .setTemplate(testTemplate)
+
+            .addVariable(pageKey, page)
+            .addVariable(sortKey, sort)
+            .build()
+
+        /**
+         * then
+         */
+        val expected = "/user/1/comments?${pageKey}=${page}&${sortKey}=${sort}"
+        assertEquals(link, expected)
+    }
+
+    @Test
+    @DisplayName("ending or starting slash problem test")
+    fun test4() {
+
+        /**
+         * given
+         */
+        val testTemplate = "/hahahaha"
+        val root = "iamroot/"
+
+        /**
+         * when
+         */
+        val link = HalLinkBuilder.builder()
+            .setTemplate(testTemplate)
+            .setRoot(root)
+            .build()
+
+        assertEquals(link, "iamroot/hahahaha")
     }
 }

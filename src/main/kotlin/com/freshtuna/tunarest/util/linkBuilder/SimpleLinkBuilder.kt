@@ -8,7 +8,7 @@ class SimpleLinkBuilder(
     private val expander: TemplateExpander
 ) {
 
-    private var root = "/"
+    private var root = ""
 
     private var template = ""
 
@@ -48,8 +48,17 @@ class SimpleLinkBuilder(
 
     fun build() : String {
 
+        var parsed = expander.expand(templateVars, template)
+
+        if (parsed.startsWith("/"))
+            parsed = parsed.substring(1)
+
+        if (root.endsWith("/"))
+            root = root.substring(0, root.length-1)
+
         return StringBuilder(root)
-            .append(expander.expand(templateVars, template))
+            .append("/")
+            .append(parsed)
             .append(this.queries.build())
             .toString()
     }

@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test
 class SimpleLinkBuilderTest {
 
     @Test
-    @DisplayName("SimpleLinkBuilder 의 모든 기능 테스트")
+    @DisplayName("tests all features of SimpleLinkBuilder")
     fun test1() {
 
         /**
@@ -55,7 +55,7 @@ class SimpleLinkBuilderTest {
     }
 
     @Test
-    @DisplayName("setPath 테스트")
+    @DisplayName("setPath test")
     fun test2() {
 
         /**
@@ -80,7 +80,7 @@ class SimpleLinkBuilderTest {
     }
 
     @Test
-    @DisplayName("setTemplate 테스트")
+    @DisplayName("setTemplate test")
     fun test3() {
 
         /**
@@ -102,5 +102,26 @@ class SimpleLinkBuilderTest {
          */
         val expected = "${root}${testTemplate}"
         assertEquals(expected, link)
+    }
+
+    @Test
+    @DisplayName("ending or starting slash problem test")
+    fun test4() {
+
+        /**
+         * given
+         */
+        val testTemplate = "/hahahaha"
+        val root = "iamroot/"
+
+        /**
+         * when
+         */
+        val link = SimpleLinkBuilder.builder()
+            .setTemplate(testTemplate)
+            .setRoot(root)
+            .build()
+
+        assertEquals(link, "iamroot/hahahaha")
     }
 }

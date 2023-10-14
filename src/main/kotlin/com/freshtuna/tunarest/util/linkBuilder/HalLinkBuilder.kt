@@ -7,7 +7,7 @@ class HalLinkBuilder(
     private val expander: TemplateExpander
 ) {
 
-    private var root = "/"
+    private var root = ""
 
     private var template = ""
 
@@ -35,8 +35,15 @@ class HalLinkBuilder(
     }
 
     fun build() : String {
-        return StringBuilder(root)
-            .append(expander.expand(templateVars, template))
-            .toString()
+
+        var parsed = expander.expand(templateVars, template)
+
+        if (parsed.startsWith("/"))
+            parsed = parsed.substring(1)
+
+        if (root.endsWith("/"))
+            root = root.substring(0, root.length-1)
+
+        return "$root/$parsed"
     }
 }
