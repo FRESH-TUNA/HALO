@@ -2,7 +2,8 @@ package com.freshtuna.tunahal.response
 
 class HalResponse : HalBasicResponse() {
 
-    private val _embedded: HashMap<String, Any> = HashMap()
+    private val _embedded: MutableMap<String, Any> = HashMap()
+
 
     fun addCollection(key: String, collection: Collection<Any>) {
         _embedded[key] = collection;
