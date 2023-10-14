@@ -1,1 +1,1 @@
-rootProject.name = "tuna-hal"
+rootProject.name = "tuna-rest"

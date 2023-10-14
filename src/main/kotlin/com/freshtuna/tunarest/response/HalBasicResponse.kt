@@ -1,4 +1,4 @@
-package com.freshtuna.tunahal.response
+package com.freshtuna.tunarest.response
 
 import java.util.HashMap;
 
