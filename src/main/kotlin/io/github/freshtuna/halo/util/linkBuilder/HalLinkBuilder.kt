@@ -1,10 +1,13 @@
-package com.freshtuna.tunarest.util.linkBuilder
+package io.github.freshtuna.halo.util.linkBuilder
 
-import com.freshtuna.tunarest.domain.Variables
-import com.freshtuna.tunarest.util.templateExpander.TemplateExpander
+import io.github.freshtuna.halo.domain.Variables
+import io.github.freshtuna.halo.util.templateParser.TemplateParser
 
+/**
+ * This Tool helps to parse HAL Template and build link to resource [RFC 6570]
+ */
 class HalLinkBuilder(
-    private val expander: TemplateExpander
+    private val expander: TemplateParser
 ) {
 
     private var root = ""
@@ -19,24 +22,37 @@ class HalLinkBuilder(
         }
     }
 
+    /**
+     * Set root path
+     * Built link is started with root path
+     */
     fun setRoot(baseUrl: String): HalLinkBuilder {
         this.root = baseUrl
         return this
     }
 
+    /**
+     * Set HAL Template
+     */
     fun setTemplate(template: String): HalLinkBuilder {
         this.template = template
         return this
     }
 
+    /**
+     * Add variable to HAL template
+     */
     fun addVariable(name: String, value: String): HalLinkBuilder {
         this.templateVars.add(name, value)
         return this
     }
 
+    /**
+     * Build link to resource
+     */
     fun build() : String {
 
-        var parsed = expander.expand(templateVars, template)
+        var parsed = expander.parse(templateVars, template)
 
         if (parsed.startsWith("/"))
             parsed = parsed.substring(1)

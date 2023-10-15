@@ -1,4 +1,4 @@
-package com.freshtuna.tunarest.util.linkBuilder
+package io.github.freshtuna.halo.util.linkBuilder
 
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test

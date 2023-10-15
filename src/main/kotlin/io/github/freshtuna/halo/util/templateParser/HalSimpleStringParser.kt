@@ -1,16 +1,21 @@
-package com.freshtuna.tunarest.util.templateExpander
+package io.github.freshtuna.halo.util.templateParser
 
-import com.freshtuna.tunarest.domain.Variables
+import io.github.freshtuna.halo.domain.Variables
 
-class HalSimpleStringExpander(
-    private val nextExpander: TemplateExpander?
-) : TemplateExpander {
+/**
+ * This Class helps to parse Simple String parsing in HAL Template [RFC 6570]
+ *
+ * ex) {name}, {id}
+ */
+class HalSimpleStringParser(
+    private val nextExpander: TemplateParser?
+) : TemplateParser {
 
     constructor() : this(null)
 
     private val TEMPLATE_SIMPLE_REGEX = Regex("\\{([-,\\w]+)\\}")
 
-    override fun expand(variables: Variables, template: String): String {
+    override fun parse(variables: Variables, template: String): String {
 
         val result = StringBuilder(template)
 
@@ -28,7 +33,7 @@ class HalSimpleStringExpander(
         }
 
         if(nextExpander != null)
-            return nextExpander.expand(variables, result.toString())
+            return nextExpander.parse(variables, result.toString())
 
         return result.toString()
     }
