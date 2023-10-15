@@ -1,6 +1,6 @@
-package com.freshtuna.tunarest.util.queryBuilder
+package io.github.freshtuna.halo.util.queryBuilder
 
-import com.freshtuna.tunarest.domain.Variables
+import io.github.freshtuna.halo.domain.Variables
 
 class QueryBuilder private constructor() {
     companion object {

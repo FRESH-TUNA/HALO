@@ -1,4 +1,4 @@
-package com.freshtuna.tunarest.domain
+package io.github.freshtuna.halo.domain
 
 import java.util.TreeMap
 
