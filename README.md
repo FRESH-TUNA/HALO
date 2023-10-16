@@ -1,8 +1,8 @@
-# HALO 
+# HALO
 ![Maven Central](https://img.shields.io/maven-central/v/io.github.fresh-tuna/halo?style=flat-square&color=green)
 
 ## Description
-This project provides a variety of tools to help you develop restful APIs and parse HAL templates in kotlin environments.
+This project provides a variety of tools to help you develop restful APIs and parse HAL templates in kotlin/java environments.
 
 We are currently working on creating a tool to parse templates in compliance with ([RFC 6570](https://datatracker.ietf.org/doc/html/rfc6570#section-1.4)) standards.
 
@@ -10,7 +10,7 @@ We are currently working on creating a tool to parse templates in compliance wit
 ## How to install?
 ```shell
 # gradle
-implementation("io.github.fresh-tuna:halo:1.0.1-beta")
+implementation("io.github.fresh-tuna:halo:1.0.2-beta")
 
 # maven
 <dependency>
@@ -18,6 +18,7 @@ implementation("io.github.fresh-tuna:halo:1.0.1-beta")
     <artifactId>halo</artifactId>
     <version>1.0.1-beta</version>
 </dependency>
+
 ```
 
 ## features

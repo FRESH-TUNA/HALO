@@ -5,15 +5,20 @@ plugins {
     kotlin("jvm") version "1.9.0"
 
     // for publishing
+    id("java-library")
     id("maven-publish")
     id("signing")
 }
 
 group = "io.github.fresh-tuna"
-version = "1.0.1-beta"
+version = "1.0.2-beta"
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
+    // limits version of java code,
+    sourceCompatibility = JavaVersion.VERSION_11
+
+    // limits version of class file,
+    targetCompatibility = JavaVersion.VERSION_11
 }
 
 repositories {
@@ -31,7 +36,7 @@ dependencies {
 tasks.withType<KotlinCompile> {
     kotlinOptions {
         freeCompilerArgs += "-Xjsr305=strict"
-        jvmTarget = "17"
+        jvmTarget = "11"
     }
 }
 
@@ -52,6 +57,7 @@ ext["ossrhPassword"] = ""
 
 val javadocJar by tasks.registering(Jar::class) {
     archiveClassifier.set("javadoc")
+    from(tasks.javadoc.get().destinationDir)
 }
 
 val sourcesJar by tasks.registering(Jar::class) {
@@ -102,7 +108,7 @@ afterEvaluate {
             create<MavenPublication>("staging") {
                 groupId = groupId()
                 artifactId = "halo"
-                version = "1.0.1-beta"
+                version = version
 
                 from(components.getByName("java"))
 
@@ -119,8 +125,8 @@ afterEvaluate {
 
                     licenses {
                         license {
-                            name.set("MIT")
-                            url.set("https://opensource.org/licenses/MIT")
+                            name.set("The Apache License, Version 2.0")
+                            url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
                         }
                     }
                     developers {
