@@ -18,8 +18,9 @@ class HalLinkBuilderTest {
         val pageKey = "page"
         val sortKey = "sort"
         val sizeKey = "size"
+        val friendKey = "friend"
 
-        val testTemplate = "/user/{${userIdKey}}/posts/{${postIdKey}}/comments{?${pageKey},${sortKey},${sizeKey}}"
+        val testTemplate = "/user/{${userIdKey}}/posts/{${postIdKey}}/comments{?${pageKey},${sortKey},${sizeKey},${friendKey}:5*}"
 
 
         /**
@@ -45,13 +46,17 @@ class HalLinkBuilderTest {
             .addVariable(sortKey, sort)
             .addVariable(sizeKey, size)
 
+            .addVariable(friendKey, "tom")
+            .addVariable(friendKey, "mickey")
+            .addVariable(friendKey, "peter")
+
             .build()
 
         /**
          * then
          */
-        val expected = "${baseUrl}/user/${userId}/posts/${postId}/comments?${pageKey}=${page}&${sortKey}=${sort}&${sizeKey}=${size}"
-        assertEquals(link, expected)
+        val expected = "${baseUrl}/user/${userId}/posts/${postId}/comments?${pageKey}=${page}&${sortKey}=${sort}&${sizeKey}=${size}&${friendKey}=tom&${friendKey}=peter"
+        assertEquals(expected, link)
     }
 
     @Test

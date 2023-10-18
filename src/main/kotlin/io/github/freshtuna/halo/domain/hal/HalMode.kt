@@ -11,6 +11,6 @@ enum class HalMode(
     val STERTEGY: HalParsingStretegy
 ) {
 
-    SIMPLE_STRING("", ",", Regex("\\{([-,*\\w]+)\\}"), HalValueParsingStrategy()),
-    FORM_STYLE_QUERY("?", "&", Regex("\\{\\?([-,*\\w]+)\\}"), HalDictParingStrategy());
+    SIMPLE_STRING("", ",", Regex("\\{([-,:*\\w]+)\\}"), HalValueParsingStrategy()),
+    FORM_STYLE_QUERY("?", "&", Regex("\\{\\?([-,:*\\w]+)\\}"), HalDictParingStrategy());
 }

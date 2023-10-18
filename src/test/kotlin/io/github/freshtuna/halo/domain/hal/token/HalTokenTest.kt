@@ -39,4 +39,66 @@ class HalTokenTest {
 
         assertEquals(expected, result)
     }
+
+    @Test
+    @DisplayName("value length limit test when multi value disallowed")
+    fun valueLengthLimitTest() {
+
+        /**
+         * given
+         */
+        val name = "name"
+        val limit = 3
+        val seperator = "x"
+        val stretegy = HalDictParingStrategy()
+
+
+        /**
+         * when
+         */
+        val variables = Variables()
+        variables.add(name, "blue")
+
+
+        val halToken = HalToken(name, limit, allowMulti = false)
+        val result = halToken.parse(variables, stretegy, seperator)
+
+        /**
+         * then
+         */
+        assertEquals("", result)
+    }
+
+    @Test
+    @DisplayName("value length limit test when multi value allowed")
+    fun valueLengthLimitTestWhenMultiValueAllowed() {
+
+        /**
+         * given
+         */
+        val name = "name"
+        val limit = 4
+        val seperator = "x"
+        val stretegy = HalDictParingStrategy()
+
+
+        /**
+         * when
+         */
+        val variables = Variables()
+
+        variables.add(name, "green")
+        variables.add(name, "blue")
+        variables.add(name, "orange")
+        variables.add(name, "red")
+
+        val halToken = HalToken(name, limit,true)
+        val result = halToken.parse(variables, stretegy, seperator)
+
+        /**
+         * then
+         */
+        val expected = stretegy.parse(name, "blue")+seperator+stretegy.parse(name, "red")+seperator
+        assertEquals(expected, result)
+    }
 }
