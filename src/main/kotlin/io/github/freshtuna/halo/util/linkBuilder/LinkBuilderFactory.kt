@@ -1,7 +1,7 @@
 package io.github.freshtuna.halo.util.linkBuilder
 
-import io.github.freshtuna.halo.util.templateParser.HalFormStyleQueryParser
-import io.github.freshtuna.halo.util.templateParser.HalSimpleStringParser
+import io.github.freshtuna.halo.util.parser.TemplateParserDecorator
+import io.github.freshtuna.halo.util.parser.hal.context.HalTemplateParserContext
 
 class LinkBuilderFactory {
     companion object {
@@ -9,9 +9,13 @@ class LinkBuilderFactory {
         /**
          * parser DI
          */
-        private val halSimpleStringExpander = HalSimpleStringParser()
+        private val halSimpleStringParser = HalTemplateParserContext.SIMPLE_STRING_PARSER
 
-        private val expander = HalFormStyleQueryParser(halSimpleStringExpander)
+        private val halFormStyleQueryParser = HalTemplateParserContext.FORM_QUERY_PARSER
+
+        private val expander = TemplateParserDecorator(
+            halFormStyleQueryParser, halSimpleStringParser
+        )
 
         /**
          * factory method
@@ -21,7 +25,7 @@ class LinkBuilderFactory {
         }
 
         fun createSimpleLinkBuilder(): SimpleLinkBuilder {
-            return SimpleLinkBuilder(halSimpleStringExpander)
+            return SimpleLinkBuilder(halSimpleStringParser)
         }
     }
 }

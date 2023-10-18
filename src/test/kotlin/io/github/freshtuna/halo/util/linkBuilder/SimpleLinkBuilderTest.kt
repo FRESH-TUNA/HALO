@@ -50,7 +50,7 @@ class SimpleLinkBuilderTest {
         /**
          * then
          */
-        val expected = "${baseUrl}/user/${userId}/posts/${postId}/comments?${pageKey}=${page}&${sizeKey}=${size}&${sortKey}=${sort}"
+        val expected = "${baseUrl}/user/${userId}/posts/${postId}/comments?${pageKey}=${page}&${sortKey}=${sort}&${sizeKey}=${size}"
         assertEquals(expected, link)
     }
 

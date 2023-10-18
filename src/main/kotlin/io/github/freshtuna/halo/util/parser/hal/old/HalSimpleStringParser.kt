@@ -1,6 +1,7 @@
-package io.github.freshtuna.halo.util.templateParser
+package io.github.freshtuna.halo.util.parser.hal.old
 
 import io.github.freshtuna.halo.domain.Variables
+import io.github.freshtuna.halo.domain.template.parser.TemplateParser
 
 /**
  * This Class helps to parse Simple String parsing in HAL Template [RFC 6570]

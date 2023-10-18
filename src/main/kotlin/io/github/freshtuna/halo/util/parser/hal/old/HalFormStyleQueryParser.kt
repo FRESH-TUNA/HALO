@@ -1,6 +1,7 @@
-package io.github.freshtuna.halo.util.templateParser
+package io.github.freshtuna.halo.util.parser.hal.old
 
 import io.github.freshtuna.halo.domain.Variables
+import io.github.freshtuna.halo.domain.template.parser.TemplateParser
 
 /**
  * This Class helps to parse Form Style Query in HAL Template [RFC 6570]
@@ -20,7 +21,6 @@ class HalFormStyleQueryParser(
         val result = StringBuilder(template)
 
         for (match in TEMPLATE_QUERY_REGEX.findAll(template)) {
-
             val case = match.groups[1]?.value!!
             val range = match.range
             val parseResult = StringBuilder("?")
