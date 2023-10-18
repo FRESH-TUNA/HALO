@@ -39,17 +39,17 @@ Tools to create links to access the resources needed to create a restful API.
 ### HAL Templete Parser
 Tools to parse hal template
 
-#### [TemplateParser](src/main/kotlin/io/github/freshtuna/halo/util/templateParser/TemplateParser.kt)
+#### [TemplateParser](src/main/kotlin/io/github/freshtuna/halo/util/parser/TemplateParser.kt)
 - interface to all Parsers
 - All implemented parsers has TemplateParser variable.
 - So parsers can be chained to parse templates with multiple rules. (Decorator pattern)
 
-#### [HAL Simple String Parser](src/main/kotlin/io/github/freshtuna/halo/util/templateParser/HalSimpleStringParser.kt)
+#### [HAL Simple String Parser](src/main/kotlin/io/github/freshtuna/halo/util/parser/HalSimpleStringParser.kt)
 - Supports to parse simple string in HAL Template ([RFC 6570](https://datatracker.ietf.org/doc/html/rfc6570#section-1.4))
 - `ex) /users/{userId} -> /users/1`
 - Used in SimpleLinkBuilder
 
-#### [HAL Form Style Query Parser](src/main/kotlin/io/github/freshtuna/halo/util/templateParser/HalFormStyleQueryParser.kt)
+#### [HAL Form Style Query Parser](src/main/kotlin/io/github/freshtuna/halo/util/parser/HalFormStyleQueryParser.kt)
 - Supports to parse Form Style Query in HAL Template ([RFC 6570](https://datatracker.ietf.org/doc/html/rfc6570#section-1.4))
 - `ex) {?name}, {?page,sort,size} -> ?name=tuna, ?page=1&sort=2&size=3`
 - Used in HalLinkBuilder

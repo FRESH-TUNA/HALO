@@ -1,4 +1,4 @@
-package io.github.freshtuna.halo.util.templateParser
+package io.github.freshtuna.halo.domain.template.parser
 
 import io.github.freshtuna.halo.domain.Variables
 

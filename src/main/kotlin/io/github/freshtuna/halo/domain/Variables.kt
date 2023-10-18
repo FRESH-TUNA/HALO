@@ -3,7 +3,7 @@ package io.github.freshtuna.halo.domain
 import java.util.TreeMap
 
 class Variables {
-    private var variableListMap: MutableMap<String, MutableList<String>> = TreeMap()
+    private var variableListMap: MutableMap<String, MutableList<String>> = LinkedHashMap()
 
     fun add(name: String, value: String) {
 

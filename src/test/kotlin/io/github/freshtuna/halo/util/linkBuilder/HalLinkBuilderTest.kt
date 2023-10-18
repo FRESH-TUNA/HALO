@@ -110,8 +110,8 @@ class HalLinkBuilderTest {
         /**
          * then
          */
-        val expected = "/user/1/comments?${pageKey}=${page}&${sortKey}=${sort}"
-        assertEquals(link, expected)
+        val expected = "/user/1/comments?${pageKey}=${page}&${sortKey}=${sort}&${sizeKey}="
+        assertEquals(expected, link)
     }
 
     @Test

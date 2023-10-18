@@ -2,7 +2,7 @@ package io.github.freshtuna.halo.util.linkBuilder
 
 import io.github.freshtuna.halo.domain.Variables
 import io.github.freshtuna.halo.util.queryBuilder.QueryBuilder
-import io.github.freshtuna.halo.util.templateParser.TemplateParser
+import io.github.freshtuna.halo.domain.template.parser.TemplateParser
 
 /**
  * This Tool helps to build link to resource
