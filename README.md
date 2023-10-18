@@ -10,7 +10,7 @@ We are currently working on creating a tool to parse templates in compliance wit
 ## How to install?
 ```shell
 # gradle
-implementation("io.github.fresh-tuna:halo:1.0.2-beta")
+implementation("io.github.fresh-tuna:halo:1.0.3-beta")
 
 # maven
 <dependency>
