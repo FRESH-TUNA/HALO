@@ -1,8 +1,14 @@
 package io.github.freshtuna.halo.domain.hal.token
 
-import io.github.freshtuna.halo.domain.Variables
-import io.github.freshtuna.halo.domain.hal.strategy.HalParsingStretegy
+import io.github.freshtuna.halo.domain.variable.Variable
+import io.github.freshtuna.halo.domain.variable.Variables
+import io.github.freshtuna.halo.domain.variable.VariableRepresentationStrategy
 
+/**
+ * This class represents token of HAL Template
+ *
+ * ex) member:34*, size, comment:33
+ */
 class HalToken(
     val name: String,
     val allowedCount: Int = UNLIMITED,
@@ -13,15 +19,17 @@ class HalToken(
         const val UNLIMITED = -1
     }
 
-    fun parse(variables: Variables, stretegy: HalParsingStretegy, seperator: String): String {
+    fun parse(variables: Variables, strategy: VariableRepresentationStrategy, separator: String): String {
 
         val parseResult = StringBuilder()
 
         if (allowMulti)
-            for (value in variables.findAllValuesBy(name))
-                parseResult.append(parse(name, value, stretegy, seperator))
-        else
-            parseResult.append(parse(name, variables.findValueBy(name), stretegy, seperator))
+            for (variable in variables.findAllByName(name))
+                parseResult.append(parse(variable, strategy, separator))
+        else {
+            val variable = variables.findByName(name)?: Variable(name, "")
+            parseResult.append(parse(variable, strategy, separator))
+        }
 
         return parseResult.toString()
     }
@@ -29,9 +37,10 @@ class HalToken(
     /**
      * helpers
      */
-    private fun parse(name: String, value: String?, strategy: HalParsingStretegy, separator: String): String {
-        if(checkLimit(value.orEmpty()))
-            return strategy.parse(name, value)+separator
+    private fun parse(variable: Variable, strategy: VariableRepresentationStrategy, separator: String): String {
+
+        if(checkLimit(variable.value))
+            return strategy.parse(variable)+separator
         return ""
     }
 

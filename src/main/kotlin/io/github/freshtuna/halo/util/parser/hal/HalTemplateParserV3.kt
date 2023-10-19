@@ -1,6 +1,6 @@
 package io.github.freshtuna.halo.util.parser.hal
 
-import io.github.freshtuna.halo.domain.Variables
+import io.github.freshtuna.halo.domain.variable.Variables
 import io.github.freshtuna.halo.domain.hal.HalMode
 import io.github.freshtuna.halo.domain.hal.token.HalTokenizer
 

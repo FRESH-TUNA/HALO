@@ -1,7 +1,8 @@
 package io.github.freshtuna.halo.util.linkBuilder
 
-import io.github.freshtuna.halo.domain.Variables
+import io.github.freshtuna.halo.domain.variable.Variables
 import io.github.freshtuna.halo.domain.template.parser.TemplateParser
+import io.github.freshtuna.halo.domain.variable.Variable
 
 /**
  * This Tool helps to parse HAL Template and build link to resource [RFC 6570]
@@ -43,7 +44,7 @@ class HalLinkBuilder(
      * Add variable to HAL template
      */
     fun addVariable(name: String, value: String): HalLinkBuilder {
-        this.templateVars.add(name, value)
+        this.templateVars.add(Variable(name, value))
         return this
     }
 

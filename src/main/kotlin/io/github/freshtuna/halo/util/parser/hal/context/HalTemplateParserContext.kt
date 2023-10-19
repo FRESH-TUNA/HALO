@@ -3,6 +3,9 @@ package io.github.freshtuna.halo.util.parser.hal.context
 import io.github.freshtuna.halo.domain.hal.HalMode
 import io.github.freshtuna.halo.util.parser.hal.HalTemplateParserV3
 
+/**
+ * This class manages singleton HalTemplateParserV3
+ */
 class HalTemplateParserContext {
 
     companion object {

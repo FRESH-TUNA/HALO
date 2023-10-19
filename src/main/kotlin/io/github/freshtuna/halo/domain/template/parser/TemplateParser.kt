@@ -1,9 +1,9 @@
 package io.github.freshtuna.halo.domain.template.parser
 
-import io.github.freshtuna.halo.domain.Variables
+import io.github.freshtuna.halo.domain.variable.Variables
 
 /**
- * This Interfaces helps to parse HAL Template [RFC 6570]
+ * This Interfaces helps to template
  */
 interface TemplateParser {
 
