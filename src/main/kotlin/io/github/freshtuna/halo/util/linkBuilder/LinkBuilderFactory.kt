@@ -1,7 +1,7 @@
 package io.github.freshtuna.halo.util.linkBuilder
 
 import io.github.freshtuna.halo.util.parser.TemplateParserDecorator
-import io.github.freshtuna.halo.util.parser.hal.context.HalTemplateParserContext
+import io.github.freshtuna.halo.util.parser.uriTemplate.context.UriTemplateParserContext
 
 /**
  * This class provides creating new LinkBuilders using dependent singleton objects
@@ -12,9 +12,9 @@ class LinkBuilderFactory {
         /**
          * parser DI
          */
-        private val halSimpleStringParser = HalTemplateParserContext.SIMPLE_STRING_PARSER
+        private val halSimpleStringParser = UriTemplateParserContext.SIMPLE_STRING_PARSER
 
-        private val halFormStyleQueryParser = HalTemplateParserContext.FORM_QUERY_PARSER
+        private val halFormStyleQueryParser = UriTemplateParserContext.FORM_QUERY_PARSER
 
         private val expander = TemplateParserDecorator(
             halFormStyleQueryParser, halSimpleStringParser
@@ -23,8 +23,8 @@ class LinkBuilderFactory {
         /**
          * factory method
          */
-        fun createLinkBuilder(): HalLinkBuilder {
-            return HalLinkBuilder(expander)
+        fun createLinkBuilder(): UriTemplateLinkBuilder {
+            return UriTemplateLinkBuilder(expander)
         }
 
         fun createSimpleLinkBuilder(): SimpleLinkBuilder {

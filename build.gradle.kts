@@ -11,7 +11,7 @@ plugins {
 }
 
 group = "io.github.fresh-tuna"
-version = "1.0.4-beta"
+version = "1.0.5-beta"
 
 java {
     // limits version of java code,

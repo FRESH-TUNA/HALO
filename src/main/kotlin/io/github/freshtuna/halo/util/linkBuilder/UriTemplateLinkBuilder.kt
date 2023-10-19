@@ -5,9 +5,9 @@ import io.github.freshtuna.halo.domain.template.parser.TemplateParser
 import io.github.freshtuna.halo.domain.variable.Variable
 
 /**
- * This Tool helps to parse HAL Template and build link to resource [RFC 6570]
+ * This Tool helps to parse UriTemplate and build link to resource [RFC 6570]
  */
-class HalLinkBuilder(
+class UriTemplateLinkBuilder(
     private val expander: TemplateParser
 ) {
 
@@ -18,7 +18,7 @@ class HalLinkBuilder(
     private var templateVars = Variables()
 
     companion object {
-        fun builder(): HalLinkBuilder {
+        fun builder(): UriTemplateLinkBuilder {
             return LinkBuilderFactory.createLinkBuilder()
         }
     }
@@ -27,7 +27,7 @@ class HalLinkBuilder(
      * Set root path
      * Built link is started with root path
      */
-    fun setRoot(baseUrl: String): HalLinkBuilder {
+    fun setRoot(baseUrl: String): UriTemplateLinkBuilder {
         this.root = baseUrl
         return this
     }
@@ -35,15 +35,15 @@ class HalLinkBuilder(
     /**
      * Set HAL Template
      */
-    fun setTemplate(template: String): HalLinkBuilder {
+    fun setTemplate(template: String): UriTemplateLinkBuilder {
         this.template = template
         return this
     }
 
     /**
-     * Add variable to HAL template
+     * Add variable to UriTemplate
      */
-    fun addVariable(name: String, value: String): HalLinkBuilder {
+    fun addVariable(name: String, value: String): UriTemplateLinkBuilder {
         this.templateVars.add(Variable(name, value))
         return this
     }
