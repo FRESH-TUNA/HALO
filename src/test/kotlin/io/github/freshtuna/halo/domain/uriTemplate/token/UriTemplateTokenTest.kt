@@ -1,15 +1,13 @@
-package io.github.freshtuna.halo.domain.hal.token
+package io.github.freshtuna.halo.domain.uriTemplate.token
 
 import io.github.freshtuna.halo.domain.variable.Variable
-import io.github.freshtuna.halo.domain.variable.VariableRepresentationStrategy
 import io.github.freshtuna.halo.domain.variable.Variables
-import io.github.freshtuna.halo.util.variable.strategy.DictRepresentationStrategy
 import io.github.freshtuna.halo.util.variable.strategy.VariableStrategyContext
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 
-class HalTokenTest {
+class UriTemplateTokenTest {
 
     @Test
     @DisplayName("multi variable test")
@@ -37,8 +35,8 @@ class HalTokenTest {
         variables.add(orange)
 
 
-        val halToken = HalToken(name, allowMulti = true)
-        val result = halToken.parse(variables, stretegy, seperator)
+        val uriTemplateToken = UriTemplateToken(name, allowMulti = true)
+        val result = uriTemplateToken.parse(variables, stretegy, seperator)
 
         /**
          * then
@@ -68,8 +66,8 @@ class HalTokenTest {
         variables.add(Variable(name, "blue"))
 
 
-        val halToken = HalToken(name, limit, allowMulti = false)
-        val result = halToken.parse(variables, stretegy, seperator)
+        val uriTemplateToken = UriTemplateToken(name, limit, allowMulti = false)
+        val result = uriTemplateToken.parse(variables, stretegy, seperator)
 
         /**
          * then
@@ -94,8 +92,8 @@ class HalTokenTest {
          */
         val variables = Variables()
 
-        val halToken = HalToken(name, allowMulti = false)
-        val result = halToken.parse(variables, stretegy, seperator)
+        val uriTemplateToken = UriTemplateToken(name, allowMulti = false)
+        val result = uriTemplateToken.parse(variables, stretegy, seperator)
 
         /**
          * then
@@ -126,8 +124,8 @@ class HalTokenTest {
         variables.add(Variable(name, "orange"))
         variables.add(Variable(name, "red"))
 
-        val halToken = HalToken(name, limit,true)
-        val result = halToken.parse(variables, stretegy, seperator)
+        val uriTemplateToken = UriTemplateToken(name, limit,true)
+        val result = uriTemplateToken.parse(variables, stretegy, seperator)
 
         /**
          * then

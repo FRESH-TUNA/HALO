@@ -1,15 +1,15 @@
-package io.github.freshtuna.halo.domain.hal.token
+package io.github.freshtuna.halo.domain.uriTemplate.token
 
 import io.github.freshtuna.halo.domain.variable.Variable
 import io.github.freshtuna.halo.domain.variable.Variables
 import io.github.freshtuna.halo.domain.variable.VariableRepresentationStrategy
 
 /**
- * This class represents token of HAL Template
+ * This class represents token of URI template (RFC 6570)
  *
  * ex) member:34*, size, comment:33
  */
-class HalToken(
+class UriTemplateToken(
     val name: String,
     val allowedCount: Int = UNLIMITED,
     val allowMulti: Boolean,

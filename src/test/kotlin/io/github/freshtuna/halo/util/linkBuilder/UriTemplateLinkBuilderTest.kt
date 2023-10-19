@@ -4,7 +4,7 @@ import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.assertEquals
 
-class HalLinkBuilderTest {
+class UriTemplateLinkBuilderTest {
 
     @Test
     @DisplayName("test all extanders")
@@ -35,7 +35,7 @@ class HalLinkBuilderTest {
 
         val baseUrl = "https://stackoverflow.com"
 
-        val link = HalLinkBuilder.builder()
+        val link = UriTemplateLinkBuilder.builder()
             .setTemplate(testTemplate)
             .setRoot(baseUrl)
 
@@ -74,7 +74,7 @@ class HalLinkBuilderTest {
          */
         val root = "https://stackoverflow.com"
 
-        val link = HalLinkBuilder.builder()
+        val link = UriTemplateLinkBuilder.builder()
             .setTemplate(testTemplate)
             .setRoot(root)
             .build()
@@ -105,7 +105,7 @@ class HalLinkBuilderTest {
         val page = "1"
         val sort = "asc"
 
-        val link = HalLinkBuilder.builder()
+        val link = UriTemplateLinkBuilder.builder()
             .setTemplate(testTemplate)
 
             .addVariable(pageKey, page)
@@ -132,7 +132,7 @@ class HalLinkBuilderTest {
         /**
          * when
          */
-        val link = HalLinkBuilder.builder()
+        val link = UriTemplateLinkBuilder.builder()
             .setTemplate(testTemplate)
             .setRoot(root)
             .build()

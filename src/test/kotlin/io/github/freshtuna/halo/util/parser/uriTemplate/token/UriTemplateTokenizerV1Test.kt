@@ -1,11 +1,11 @@
-package io.github.freshtuna.halo.util.parser.hal.token
+package io.github.freshtuna.halo.util.parser.uriTemplate.token
 
-import io.github.freshtuna.halo.domain.hal.token.HalToken
+import io.github.freshtuna.halo.domain.uriTemplate.token.UriTemplateToken
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 
-class HalTokenizerV1Test {
+class UriTemplateTokenizerV1Test {
 
     @Test
     @DisplayName("name, limit length, multi allow parsing text")
@@ -19,18 +19,18 @@ class HalTokenizerV1Test {
         /**
          * then
          */
-        val tokenizerV1 = HalTokenizerV1()
+        val tokenizerV1 = UriTemplateTokenizerV1()
         val tokens = tokenizerV1.tokenize(baseString)
 
         assertEquals(4, tokens.size)
 
         assertEquals("page", tokens[0].name)
         assertEquals(false, tokens[0].allowMulti)
-        assertEquals(HalToken.UNLIMITED, tokens[0].allowedCount)
+        assertEquals(UriTemplateToken.UNLIMITED, tokens[0].allowedCount)
 
         assertEquals("repository", tokens[1].name)
         assertEquals(true, tokens[1].allowMulti)
-        assertEquals(HalToken.UNLIMITED, tokens[1].allowedCount)
+        assertEquals(UriTemplateToken.UNLIMITED, tokens[1].allowedCount)
 
         assertEquals("size", tokens[2].name)
         assertEquals(false, tokens[2].allowMulti)

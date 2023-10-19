@@ -8,7 +8,7 @@ import io.github.freshtuna.halo.domain.variable.Variable
 /**
  * This Tool helps to build link to resource
  *
- * It supports simple string parsing in HAL [RFC 6570]
+ * It supports simple string parsing in UriTemplate [RFC 6570]
  * ex) /users/{userId} -> /users/1
  *
  * Query String or Adding query supports
@@ -50,7 +50,7 @@ class SimpleLinkBuilder(
     }
 
     /**
-     * Set HAL template
+     * Set UriTemplate
      * Built result = Root + parsed template
      */
     fun setTemplate(template: String): SimpleLinkBuilder {

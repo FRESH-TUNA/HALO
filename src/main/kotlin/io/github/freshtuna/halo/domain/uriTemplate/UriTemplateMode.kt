@@ -1,12 +1,12 @@
-package io.github.freshtuna.halo.domain.hal
+package io.github.freshtuna.halo.domain.uriTemplate
 
 import io.github.freshtuna.halo.domain.variable.VariableRepresentationStrategy
 import io.github.freshtuna.halo.util.variable.strategy.VariableStrategyContext
 
 /**
- * This class used to provide information about HAL template Parsing
+ * This class used to provide information about URI template (RFC 6570)
  */
-enum class HalMode(
+enum class UriTemplateMode(
     val TEMPLATE_PREFIX: String = "",
     val SEPERATOR: String = ",",
     val TEMPLATE_REGEX: Regex,
