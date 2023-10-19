@@ -1,7 +1,10 @@
 package io.github.freshtuna.halo.domain.hal.token
 
-import io.github.freshtuna.halo.domain.Variables
-import io.github.freshtuna.halo.util.parser.hal.strategy.HalDictParingStrategy
+import io.github.freshtuna.halo.domain.variable.Variable
+import io.github.freshtuna.halo.domain.variable.VariableRepresentationStrategy
+import io.github.freshtuna.halo.domain.variable.Variables
+import io.github.freshtuna.halo.util.variable.strategy.DictRepresentationStrategy
+import io.github.freshtuna.halo.util.variable.strategy.VariableStrategyContext
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
@@ -17,16 +20,21 @@ class HalTokenTest {
          */
         val name = "name"
         val seperator = "x"
-        val stretegy = HalDictParingStrategy()
+        val stretegy = VariableStrategyContext.DICT_STYLE
 
 
         /**
          * when
          */
         val variables = Variables()
-        variables.add(name, "blue")
-        variables.add(name, "red")
-        variables.add(name, "orange")
+
+        val blue = Variable(name, "blue")
+        val red = Variable(name, "red")
+        val orange = Variable(name, "orange")
+
+        variables.add(blue)
+        variables.add(red)
+        variables.add(orange)
 
 
         val halToken = HalToken(name, allowMulti = true)
@@ -35,7 +43,7 @@ class HalTokenTest {
         /**
          * then
          */
-        val expected = stretegy.parse(name, "blue")+seperator+stretegy.parse(name, "red")+seperator+stretegy.parse(name, "orange")+seperator
+        val expected = blue.toString(stretegy)+seperator+red.toString(stretegy)+seperator+orange.toString(stretegy)+seperator
 
         assertEquals(expected, result)
     }
@@ -50,14 +58,14 @@ class HalTokenTest {
         val name = "name"
         val limit = 3
         val seperator = "x"
-        val stretegy = HalDictParingStrategy()
+        val stretegy = VariableStrategyContext.DICT_STYLE
 
 
         /**
          * when
          */
         val variables = Variables()
-        variables.add(name, "blue")
+        variables.add(Variable(name, "blue"))
 
 
         val halToken = HalToken(name, limit, allowMulti = false)
@@ -70,6 +78,32 @@ class HalTokenTest {
     }
 
     @Test
+    @DisplayName("if variable not Passed when multi disallowed")
+    fun ifVariableNotPassedWhenMultiDisallowed() {
+
+        /**
+         * given
+         */
+        val name = "name"
+        val seperator = "x"
+        val stretegy = VariableStrategyContext.DICT_STYLE
+
+
+        /**
+         * when
+         */
+        val variables = Variables()
+
+        val halToken = HalToken(name, allowMulti = false)
+        val result = halToken.parse(variables, stretegy, seperator)
+
+        /**
+         * then
+         */
+        assertEquals("name=$seperator", result)
+    }
+
+    @Test
     @DisplayName("value length limit test when multi value allowed")
     fun valueLengthLimitTestWhenMultiValueAllowed() {
 
@@ -79,7 +113,7 @@ class HalTokenTest {
         val name = "name"
         val limit = 4
         val seperator = "x"
-        val stretegy = HalDictParingStrategy()
+        val stretegy = VariableStrategyContext.DICT_STYLE
 
 
         /**
@@ -87,10 +121,10 @@ class HalTokenTest {
          */
         val variables = Variables()
 
-        variables.add(name, "green")
-        variables.add(name, "blue")
-        variables.add(name, "orange")
-        variables.add(name, "red")
+        variables.add(Variable(name, "green"))
+        variables.add(Variable(name, "blue"))
+        variables.add(Variable(name, "orange"))
+        variables.add(Variable(name, "red"))
 
         val halToken = HalToken(name, limit,true)
         val result = halToken.parse(variables, stretegy, seperator)
@@ -98,7 +132,7 @@ class HalTokenTest {
         /**
          * then
          */
-        val expected = stretegy.parse(name, "blue")+seperator+stretegy.parse(name, "red")+seperator
+        val expected = stretegy.parse(Variable(name, "blue"))+seperator+stretegy.parse(Variable(name, "red"))+seperator
         assertEquals(expected, result)
     }
 }

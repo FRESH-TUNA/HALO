@@ -1,4 +1,4 @@
-package io.github.freshtuna.halo.util.parser.hal.atomic
+package io.github.freshtuna.halo.util.parser.hal.token
 
 import io.github.freshtuna.halo.domain.hal.token.HalToken
 import io.github.freshtuna.halo.domain.hal.token.HalTokenizer

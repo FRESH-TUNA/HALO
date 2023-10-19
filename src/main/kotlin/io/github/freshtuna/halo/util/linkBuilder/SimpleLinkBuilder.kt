@@ -1,8 +1,9 @@
 package io.github.freshtuna.halo.util.linkBuilder
 
-import io.github.freshtuna.halo.domain.Variables
+import io.github.freshtuna.halo.domain.variable.Variables
 import io.github.freshtuna.halo.util.queryBuilder.QueryBuilder
 import io.github.freshtuna.halo.domain.template.parser.TemplateParser
+import io.github.freshtuna.halo.domain.variable.Variable
 
 /**
  * This Tool helps to build link to resource
@@ -65,7 +66,7 @@ class SimpleLinkBuilder(
      *     built result = /users/1
      */
     fun addArg(name: String, value: String): SimpleLinkBuilder {
-        this.templateVars.add(name, value)
+        this.templateVars.add(Variable(name, value))
         return this
     }
 

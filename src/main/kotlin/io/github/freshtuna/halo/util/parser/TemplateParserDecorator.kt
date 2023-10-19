@@ -1,8 +1,11 @@
 package io.github.freshtuna.halo.util.parser
 
-import io.github.freshtuna.halo.domain.Variables
+import io.github.freshtuna.halo.domain.variable.Variables
 import io.github.freshtuna.halo.domain.template.parser.TemplateParser
 
+/**
+ * This class is used to chain with other TemplateParser (Decorator pattern)
+ */
 class TemplateParserDecorator(
     private val parser: TemplateParser,
     private val nextExpander: TemplateParser?
